@@ -1,6 +1,6 @@
-const components = {}
-components.welcomeScreen = "<h1>Welcome to Chat app<h1>"
-components.registerScreen = `
+const component = {}
+component.welcomeScreen = "<h1>Welcome to Chat app<h1>"
+component.registerScreen = `
 <div class="register-container">
 <div class="aside-right">
   <div class="header">
@@ -40,7 +40,7 @@ components.registerScreen = `
         id="confirm-password-error"></div>
     </div>
     <div class="form-action">
-      <span class="cursor-pointer" id="redirect-to-login" onclick="redirect_to_login()">
+      <span class="cursor-pointer" id="redirect-to-login">
         Already have an account? Login
       </span>
       <button class="btn" type="submit">
@@ -52,7 +52,7 @@ components.registerScreen = `
 </div>
 `
 
-components.loginScreen = `
+component.loginScreen = `
 <div class="login-container">
         <div class="aside-right">
             <div class="header">
@@ -68,7 +68,7 @@ components.loginScreen = `
                     <div class="error" id="password-error"></div>
                 </div>
                 <div class="form-action">
-                    <span class="cursor-pointer" id="redirect-to-register" onclick="redirect_to_register()">
+                    <span class="cursor-pointer" id="redirect-to-register">
                         Don't have an account? Register
                     </span>
                     <button class="btn" type="submit">
@@ -78,4 +78,30 @@ components.loginScreen = `
             </form>
         </div>
     </div>
+`
+
+component.chatScreen = `
+<div class="chat-container">
+<div class="header">
+  MindX Chat
+</div>
+<div class="main">
+  <div class="conversation-detail">
+    <div class="conversation-header">
+      First conversation
+    </div>
+    <div class="list-messages">
+    </div>
+    <form id="send-message-form">
+      <div class="input-wrapper">
+        <input type="text" name="message"
+          placeholder="Type a message">
+      </div>
+      <button type="submit">
+        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+</div>
+</div>
 `
