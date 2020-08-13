@@ -39,9 +39,11 @@ model.loadConversations = async () => {
     .where("users","array-contains",model.currentUser.email)
     .get()
     model.conversations = getDataFromDocs(response.docs)
-    if(model.conversations.length > 0)
+    if(model.conversations.length > 0){
     model.currentConversation = model.conversations[0]
     view.showCurrentConversation()
+    }
+    view.showConversations()
 }
 
 model.listenConversationsChange = () => {
@@ -71,6 +73,21 @@ model.listenConversationsChange = () => {
                     view.scrollToEndElement()
                 }
             }
+            else if (type === 'added') {
+                const docData = getDataFromDoc(oneChange.doc)
+                model.conversations.push(docData)
+                view.addConversation(docData)
+            }
         }
     })
 }
+
+model.createConversation=(dataCreate)=>{
+    const conversationToAdd={
+      createdAt: new Date().toISOString(),
+      messages: [],
+      title: dataCreate.conversationTitle,
+      users: [model.currentUser.email, dataCreate.conversationEmail]
+    }
+    firebase.firestore().collection('conversations').add(conversationToAdd)
+  }

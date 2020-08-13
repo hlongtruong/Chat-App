@@ -78,9 +78,4 @@ getDataFromDoc = (doc) => {
 }
 getDataFromDocs = (docs) => {
   return docs.map(item => getDataFromDoc(item))
-  // for(let index = 0; index < docs.length; index++) {
-  //   const element = getDataFromDoc(docs[index])
-  //   listData.push(element)
-  // }
-  // return listData
 }

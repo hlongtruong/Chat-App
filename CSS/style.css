@@ -31,3 +31,16 @@
     cursor: pointer;
 }
 
+.header{
+    text-align: center;
+    height: 64px;
+    background: #037BFE;
+    line-height: 64px;
+    color: #ffffff;
+    font-size: 28px;
+}
+.btn-light{
+    background: none;
+    color: #333;
+}
+

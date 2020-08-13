@@ -62,3 +62,21 @@ controller.login = (dataLogin) => {
         model.login(dataLogin)
     }
 }
+
+controller.createConversation = (dataCreate) => {
+    if(dataCreate.conversationTitle.trim() === ""){
+        document.getElementById("conversation-name-error").innerText = "Please input your conversation name"
+    }
+    else{
+        document.getElementById("conversation-name-error").innerText = ""
+    }
+    if(dataCreate.conversationEmail.trim() === ""){
+        document.getElementById("conversation-email-error").innerText = "Please input your friend email"
+    }
+    else{
+        document.getElementById("conversation-email-error").innerText = ""
+    }
+    if (dataCreate.conversationTitle !== '' && dataCreate.conversationEmail !== '') {
+        model.createConversation(dataCreate)
+    }
+}
