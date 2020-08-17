@@ -31,7 +31,10 @@ model.addMessage = (message) => {
     const dataToUpdate = {
         messages: firebase.firestore.FieldValue.arrayUnion(message)
     }
-    firebase.firestore().collection("conversations").doc("0AFvalgWhAfPTuNo3xJf").update(dataToUpdate)
+    firebase.firestore()
+    .collection(model.collectionName)
+    .doc(model.currentConversation.id)
+    .update(dataToUpdate)
 }
 
 model.loadConversations = async () => {
@@ -52,6 +55,7 @@ model.listenConversationsChange = () => {
     .collection(model.collectionName)
     .where("users", "array-contains", model.currentUser.email)
     .onSnapshot((res) => {
+        console.log(res)
         if(isFirstRun) {
             isFirstRun = false
             return
@@ -73,7 +77,7 @@ model.listenConversationsChange = () => {
                     view.scrollToEndElement()
                 }
             }
-            else if (type === 'added') {
+            if(type === "added") {
                 const docData = getDataFromDoc(oneChange.doc)
                 model.conversations.push(docData)
                 view.addConversation(docData)
@@ -82,12 +86,20 @@ model.listenConversationsChange = () => {
     })
 }
 
-model.createConversation=(dataCreate)=>{
-    const conversationToAdd={
-      createdAt: new Date().toISOString(),
+model.createConversation = (dataCreate) => {
+    const conversationData = {
+      createdAt: (new Date()).toISOString(),
       messages: [],
       title: dataCreate.conversationTitle,
       users: [model.currentUser.email, dataCreate.conversationEmail]
     }
-    firebase.firestore().collection('conversations').add(conversationToAdd)
-  }
+    firebase.firestore().collection('conversations').add(conversationData)
+    view.setActiveScreen("chatScreen", true)
+}
+
+model.addUser = (data) => {
+    const userToAdd = { 
+        users: firebase.firestore.FieldValue.arrayUnion(data)
+    }
+    firebase.firestore().collection('conversations').doc(model.currentConversation.id).update(userToAdd)
+}

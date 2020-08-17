@@ -65,18 +65,30 @@ controller.login = (dataLogin) => {
 
 controller.createConversation = (dataCreate) => {
     if(dataCreate.conversationTitle.trim() === ""){
-        document.getElementById("conversation-name-error").innerText = "Please input your conversation name"
+        view.setErrorMessage("conversation-name-error", "Please input a conversation name")
     }
     else{
-        document.getElementById("conversation-name-error").innerText = ""
+        view.setErrorMessage("conversation-name-error", "")
     }
     if(dataCreate.conversationEmail.trim() === ""){
-        document.getElementById("conversation-email-error").innerText = "Please input your friend email"
+        view.setErrorMessage("conversation-email-error", "Please input your friend email")
     }
     else{
-        document.getElementById("conversation-email-error").innerText = ""
+        view.setErrorMessage("conversation-email-error", "")
     }
-    if (dataCreate.conversationTitle !== '' && dataCreate.conversationEmail !== '') {
+    if (dataCreate.conversationTitle !== "" && dataCreate.conversationEmail !== "") {
         model.createConversation(dataCreate)
+    }
+}
+
+controller.addUser = (dataAdd) => {
+    if(dataAdd.email.trim() === ""){
+        view.setErrorMessage("add-user-message-error", "Please input your friend email")
+    }
+    else{
+        view.setErrorMessage("add-user-message-error", "")
+    }
+    if(dataAdd.email !== ""){
+        model.addUser(dataAdd)
     }
 }
