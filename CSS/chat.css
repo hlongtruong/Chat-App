@@ -89,6 +89,18 @@
 
   .chat-container .list-conversations .conversation{
     padding: 5px 10px;
+    position: relative;
+  }
+
+  .chat-container .conversation .notification{
+    width: 15px;
+    height: 15px;
+    background: #027bfd;
+    border-radius: 50%;
+    position: absolute;
+    right: 8px;
+    top: 13px;
+    display: none;
   }
   .chat-container .list-conversations .conversation.current{
     background-color: #dbdbdb;
@@ -105,3 +117,27 @@
   .chat-container #add-user-form{
     margin-top: 12px;
   }
+
+  @media screen and (max-width : 768px) {
+    .aside-right{
+      display: none;
+    };
+    .conversation-num-user{
+      display: none;
+    };
+    .chat-container .list-conversations .conversation{
+      border: 1px solid #dbdbdb;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 5px auto;
+    }
+    .chat-container .conversation .notification {
+      top: 23px;
+      right: 5px;
+    }
+  }
+

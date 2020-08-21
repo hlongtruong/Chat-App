@@ -110,7 +110,7 @@ component.chatScreen = `
     </form>
   </div>
   <div class="aside-right">
-    <div class="listUser">
+    <div class="list-user">
     </div>
     <form id="add-user-form">
         <div class="input-wrapper">

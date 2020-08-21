@@ -81,14 +81,14 @@ controller.createConversation = (dataCreate) => {
     }
 }
 
-controller.addUser = (dataAdd) => {
-    if(dataAdd.email.trim() === ""){
-        view.setErrorMessage("add-user-message-error", "Please input your friend email")
+controller.addUser = (user) => {
+    if(user.trim() === ""){
+        view.setErrorMessage("add-user-email-error", "Please input an user email")
     }
     else{
-        view.setErrorMessage("add-user-message-error", "")
+        view.setErrorMessage("add-user-email-error", "")
     }
-    if(dataAdd.email !== ""){
-        model.addUser(dataAdd)
+    if(user.trim() !== ""){
+        model.addUser(user)
     }
 }

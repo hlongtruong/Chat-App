@@ -70,11 +70,20 @@ model.listenConversationsChange = () => {
                         model.conversations[index] = docData
                     }
                 }
+                if(docData.messages[docData.messages.length - 1].owner !== model.currentUser.email){
+                    view.showNotification(docData.id)
+                }
                 if(docData.id === model.currentConversation.id) {
+                    if(docData.users.length !== model.currentConversation.users.length){
+                        view.addUser(docData.users[docData.users.length-1])
+                        view.updateNumberUsers(docData.id, docData.users.length)
+                    }
+                    else{
+                        const lastMessage = docData.messages[docData.messages.length - 1]
+                        view.addMessage(lastMessage)
+                        view.scrollToEndElement()
+                    }
                     model.currentConversation = docData
-                    const lastMessage = docData.messages[docData.messages.length - 1]
-                    view.addMessage(lastMessage)
-                    view.scrollToEndElement()
                 }
             }
             if(type === "added") {
@@ -98,8 +107,8 @@ model.createConversation = (dataCreate) => {
 }
 
 model.addUser = (data) => {
-    const userToAdd = { 
+    const dataToUPdate = { 
         users: firebase.firestore.FieldValue.arrayUnion(data)
     }
-    firebase.firestore().collection('conversations').doc(model.currentConversation.id).update(userToAdd)
+    firebase.firestore().collection(model.collectionName).doc(model.currentConversation.id).update(dataToUPdate)
 }
