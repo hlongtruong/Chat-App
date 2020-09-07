@@ -108,7 +108,7 @@
   .chat-container .aside-right{
     padding: 10px;
     border-left: 1px solid #dbdbdb;
-    width: 15%;
+    width: 13%;
   }
   .chat-container .aside-right .user{
     overflow: hidden;
@@ -117,8 +117,27 @@
   .chat-container #add-user-form{
     margin-top: 12px;
   }
-
+  .sidebar{
+    position: absolute;
+    top: 63px;
+    right: 13px;
+    color: #027bfd;
+    display: none;
+  }
+  .show{
+    position: fixed;
+    display: block!important;
+    right: 0;
+    background: #fff;
+    width: 30%!important;
+  }
+  .move-sidebar{
+    right: 31%;
+  }
   @media screen and (max-width : 768px) {
+    .sidebar{
+      display: block;
+    }
     .aside-right{
       display: none;
     };

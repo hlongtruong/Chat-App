@@ -75,6 +75,10 @@ view.setActiveScreen = (screenName, fromCreateConversation = false) => {
             document.querySelector(".create-conversation .btn").addEventListener("click", () => {
                 view.setActiveScreen("createConversation")
             })
+            document.querySelector(".sidebar").addEventListener("click", () => {
+                document.querySelector(".aside-right").classList.toggle("show")
+                document.querySelector(".sidebar").classList.toggle("move-sidebar")
+            })
             break;    
             case "createConversation":
                 document.getElementById("app").innerHTML = component.createConversation
