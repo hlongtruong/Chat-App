@@ -4,7 +4,7 @@ component.registerScreen = `
 <div class="register-container">
 <div class="aside-right">
   <div class="header">
-    <h3>MindX chat</h3>
+    <h3>Long chat</h3>
   </div>
   <form id="register-form">
     <div class="input-name-wrapper">
@@ -56,7 +56,7 @@ component.loginScreen = `
 <div class="login-container">
         <div class="aside-right">
             <div class="header">
-                <h3>MindX chat</h3>
+                <h3>Long chat</h3>
             </div>
             <form id="login-form">
                 <div class="input-wrapper">
@@ -83,7 +83,7 @@ component.loginScreen = `
 component.chatScreen = `
 <div class="chat-container">
 <div class="header">
-  MindX Chat
+  Long Chat
 </div>
 <div class="sidebar">
   <i class="fa fa-bars" aria-hidden="true"></i>
@@ -130,7 +130,7 @@ component.chatScreen = `
 component.createConversation = `
 <div class="create-conversation-container">
     <div class="header">
-        MindX Chat
+        Long Chat
     </div>
     <div class="main" style="padding: 50px 20%;">
         <form id="create-conversation-form">
